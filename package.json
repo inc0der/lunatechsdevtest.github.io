@@ -1,0 +1,23 @@
+{
+  "name": "lunatechsdev.github.io",
+  "version": "1.0.0",
+  "description": "The LunaTechs website",
+  "main": "index.js",
+  "scripts": {
+    "build": "vuepress ./src",
+    "serve": "vuepress dev ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LunaTechsDev/lunatechsdev.github.io.git"
+  },
+  "author": "LunaTech Contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LunaTechsDev/lunatechsdev.github.io/issues"
+  },
+  "homepage": "https://github.com/LunaTechsDev/lunatechsdev.github.io#readme",
+  "dependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
