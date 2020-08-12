@@ -4,7 +4,7 @@
   "description": "The LunaTechs website",
   "main": "index.js",
   "scripts": {
-    "build": "vuepress ./src",
+    "build": "vuepress build ./src",
     "serve": "vuepress dev ./src"
   },
   "repository": {
