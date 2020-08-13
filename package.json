@@ -19,5 +19,8 @@
   "homepage": "https://github.com/LunaTechsDev/lunatechsdev.github.io#readme",
   "dependencies": {
     "vuepress": "^1.5.3"
+  },
+  "devDependencies": {
+    "vuepress-theme-hope": "^0.7.2"
   }
 }
