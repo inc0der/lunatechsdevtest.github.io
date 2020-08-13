@@ -7,7 +7,13 @@ module.exports = resolve({
   themeConfig: {
     author: 'LunaTechs Contributors',
     repo: 'https://github.com/LunaTechsDev',
-    footer: true,
+    fullscreen: false,
+    pageInfo: false,
+    editLinks: false,
+    lastUpdated: false,
+    footer: {
+      display: true
+    },
     search: false,
     nav: [
       { text: 'Home', link: '/' },
