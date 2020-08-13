@@ -21,6 +21,6 @@
     "vuepress": "^1.5.3"
   },
   "devDependencies": {
-    "vuepress-theme-hope": "^0.7.1"
+    "vuepress-theme-hope": "^0.7.2"
   }
 }
