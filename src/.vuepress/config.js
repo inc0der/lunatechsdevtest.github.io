@@ -3,7 +3,14 @@ const resolve = require('vuepress-theme-hope/resolve')
 module.exports = resolve({
   title: 'LunaTechsDev',
   description: 'Just playing around',
-  baseLang: 'en-us',
+  baseLang: 'en-US',
+  locales: {
+    '/': {
+      lang: 'en-US',
+      themeColor: 'Accent Color',
+      themeMode: 'Mode'
+    }
+  },
   themeConfig: {
     author: 'LunaTechs Contributors',
     repo: 'https://github.com/LunaTechsDev',
