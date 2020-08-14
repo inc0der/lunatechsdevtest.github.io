@@ -1,0 +1,3 @@
+[submodule "luna-server"]
+	path = luna-server
+	url = https://github.com/LunaTechsDev/luna-server.git
