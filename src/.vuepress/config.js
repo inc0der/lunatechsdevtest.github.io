@@ -4,6 +4,9 @@ module.exports = resolve({
   title: 'LunaTechsDev',
   description: 'Just playing around',
   baseLang: 'en-US',
+  head: [
+    ['script', { src: 'https://hcaptcha.com/1/api.js'}, 'async defer']
+  ],
   locales: {
     '/': {
       lang: 'en-US',
