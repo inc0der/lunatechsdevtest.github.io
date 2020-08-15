@@ -207,7 +207,6 @@ function filterGitProjects (projects) {
     const matches = pluginKeyMatch[0]
 
     if (matches && matches.length > 0) {
-      console.log(matches)
       return {
         gitSlug: project.name,
         name: matches[1],
