@@ -2,7 +2,7 @@
   <div class="theme-container">
     <div v-show="formSubmitted">
       <p>
-        Your bug has been succesfully reported
+        Your bug has been succesfully reported at {{ issueLink }}
       </p>
     </div>
     <form v-show="!formSubmitted">
@@ -29,8 +29,8 @@
               <b>*</b>
             </small>
           </label>
-          <select v-model="selectedPluginId" name="plugin">
-            <option v-for="plugin in plugins" :value="plugin.id">
+          <select v-model="selectedPluginRepo" name="plugin">
+            <option v-for="plugin in plugins" :value="plugin.repo">
               {{
               plugin.name
               }}
@@ -208,7 +208,7 @@ function filterGitProjects (projects) {
 
     if (matches && matches.length > 0) {
       return {
-        gitSlug: project.name,
+        repo: project.name,
         name: matches[1],
         url: project.url,
         id: project.id
@@ -224,7 +224,7 @@ export default {
       formSubmitted: false,
       plugins: [],
       title: '',
-      selectedPluginId: '',
+      selectedPluginRepo: '',
       os: '🏁 Windows 10',
       bugLocations: ['Game Map', 'Battle Scene', 'Menu', 'Other'],
       bugLocation: '',
@@ -278,7 +278,7 @@ export default {
         this.errors.push('A Title is required')
       }
 
-      if (!this.selectedPluginId) {
+      if (!this.selectedPluginRepo) {
         this.errors.push('The affected plugin is required')
       }
 
@@ -353,21 +353,24 @@ ${this.offendingCode}
           content
         }
 
-        const response = await fetch(`${API_URL}/reportBug`, {
+        const response = await fetch(`${DEV_API_URL}/reportBug`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            data,
-            selectedPluginId: this.selectedPluginId
+            repo: this.selectedPluginRepo,
+            data
           })
         })
 
+        console.log(response)
         if (response.ok) {
+          const issueData = await response.json()
+          console.log(issueData)
           this.formSubmitted = true
           this.isProcessing = false
-          this.issueLink = response.web_url
+          this.issueLink = issueData.data.html_url
           return
         }
         this.errors.push('Unable to submit report')
@@ -385,7 +388,7 @@ ${this.offendingCode}
 
   async mounted () {
      if (localStorage.plugins) {
-      this.plugins = JSON.parse(localStorage.paidPlugins)
+      this.plugins = JSON.parse(localStorage.plugins)
       return
     }
     const gitResponse = await fetch(`${DEV_API_URL}/fetchGitProjects`)
